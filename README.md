@@ -4,7 +4,7 @@
 
 > 3ID is a cross-platform identity protocol built on the Ceramic network
 
-[3ID](http://3idprotocol.org) is a flexible, lightweight framework for creating and managing W3C-compliant [decenentralized identifiers](https://www.w3.org/TR/did-core/) (DIDs) that work across all platforms and authentication systems, providing unification and interoperability to users across the worldwide web. 
+[3ID](http://3idprotocol.org) is a flexible, lightweight framework for creating and managing W3C-compliant [decenentralized identifiers](https://www.w3.org/TR/did-core/) (DIDs) that work across all platforms and authentication systems, providing unification and interoperability to users and their data across the worldwide web. 
 
 3ID provides:
 - Permissionless, unified identity that works across the worldwide web
