@@ -32,9 +32,10 @@
 
 ## Architecture
 
-3IDs are built using documents on the [Ceramic Network](http://ceramic.network). Ceramic is a network that allows for the permissionless publishing of metadata and content in a chain-agnostic way. Metadata is the perfect analogy for decentralized identity, since identifiers and their associated data, are forms of metadata about various accounts or resources that many exist in many different locations.
+3IDs are built using sets of linked documents on the [Ceramic Network](http://ceramic.network). 3ID's document-based design provides nearly infinite flexibility, extensibility, and customization, which is a requirement for identity as there is no single data model that can support every use case.
 
-This document-based design provides infinite flexibility and extensibility, while Ceramic ensures identities, and their associated metadata, are always publicly available and resolvable. Also, Ceramic is agnostic to underlying blockchains or other services and acts as a connector of networks, or meta-network. 
+Ceramic provides the ideal meta-network for constructing a trusted, cross-platform decentralized identity system since it allows for permissionless, censorship-resistant publishing of mutable, verifiable documents (such as metadata and content) in a chain-, platform-, and application-agnostic way. Ceramic ensures that identities, and their associated information, are always publicly available and resolvable, and thay they're not tied to any single platform.
+
 
 ## Decentralized Identifier (DID)
 
