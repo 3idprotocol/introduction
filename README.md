@@ -421,7 +421,7 @@ As mentioned, the collection policy is a document created by an application deve
 
 #### Privacy Policy
 
-The privacy policy document contains encrypted information about the user's data. All of the data is encrypted using the specific **Privacy Policy Read Key** of this policy. 
+The privacy policy document contains information that describes a particular data source in such a way as to make it consumable by other services upon consent. All of the data is encrypted using the specific [privacy policy read key](#keychain) of this policy. 
 
 - Collection-policy property: A pointer to the collection policy document that this privacy policy applies to.
 - Service-policies property: An array of service policy documents (not specified in this readme) that describe the services and their location where the data in this privacy policy exists. This includes services such as those that back up or pin the data. 
