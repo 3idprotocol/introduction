@@ -11,7 +11,7 @@
 - Integration with existing Web3 account frameworks and other authentication systems
 - Storage for any kind of identity metadata, such as profiles, claims, social graphs, etc
 - User-centric routing to external resources, such as blockchain data, off-chain data stores, APIs, etc
-- Unified access control to off-chain resources, such as data stores, services, APIs, etc
+- Unified, user-managed access control to off-chain resources, such as data stores, services, APIs, etc
 
 ### Contents
 
