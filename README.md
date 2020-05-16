@@ -34,7 +34,7 @@
 
 3IDs are built using sets of linked documents on the [Ceramic Network](http://ceramic.network). 3ID's document-based design provides nearly infinite flexibility, extensibility, and customization, which is a requirement for identity as there is no single data model that can support every use case.
 
-Ceramic provides the ideal meta-network for constructing a trusted, cross-platform decentralized identity system since it allows for permissionless, censorship-resistant publishing of mutable, verifiable documents (such as metadata and content) in a chain-, platform-, and application-agnostic way. Ceramic ensures that identities, and their associated information, are always publicly available and resolvable, and thay they're not tied to any single platform.
+Ceramic provides the ideal meta-network for constructing a trusted, cross-platform identity system since it allows for permissionless, censorship-resistant publishing of mutable, verifiable documents (such as metadata and content) in a chain-, platform-, and application-agnostic way. Ceramic ensures that identities, and their associated information, are always publicly available and resolvable, and thay they're not tied to any single platform.
 
 
 ## Decentralized Identifier (DID)
@@ -109,7 +109,7 @@ The `account` document is the foundational component for extending the core DID 
 
 ### Keychain
 
-The `keychain` document stores data needed to authenticate a DID and/or selectively disclose its encrypted information. It is used to add new authentication methods to the DID, such as blockchain/crypto accounts, allowing for the DID to be controlled by any cryptohraphic account or wallet key. 
+The `keychain` document stores data needed to authenticate a DID and/or selectively disclose its encrypted information. It is used to add new authentication methods to the DID, such as blockchain/crypto accounts, allowing for the DID to be controlled by one or many cryptohraphic accounts or wallet keys. 
 
 The keychain also adds resilience to the DID by delegating key management to the user's many different wallets. The user will never lose control of their DID as long as they maintain control of only one of the authentication methods. The only way a user will lose control of their DID is in the catastrophic scenario where they lose all of their wallet keys at the same time.
 
@@ -204,11 +204,11 @@ contains public information about the account
 
 ### Connections
 
-The `connections` document contains a list of additional documents that represent various aspects of a user's social graph, such as following (public) or contacts (private).
+The `connections` document contains a list of pointers to additional documents that represent various aspects of a user's social graph, such as who they publicly follow or their private contacts.
 
 #### Following
 
-The following tile contains a list of DIDs that the user is following.
+The `following` document contains a list of DIDs that the user is following.
 
 ##### Schema
 
@@ -258,7 +258,7 @@ The `claims` document contains a list of [verifiable claims](https://www.w3.org/
 
 ### Sources
 
-The `sources` document contains a list of data sources connected to the user. Data sources are described as a Each entry is encrypted using a unique *Privacy Policy Read Key* (see [keychain](#keychain)). This allows specific data sources to be kept private, but selectively disclosed upon request. Each entry, when decrypted, contains pointers to two additional documents, one for the collection policy and one for the privacy policy.
+The `sources` document contains a list of data sources connected to the user. Each individual data source entry is encrypted using a unique *Privacy Policy Read Key* (see [keychain](#keychain)). This allows specific data sources to be kept private, but selectively disclosed upon request. Each entry, when decrypted, contains pointers to two additional documents, one for the `collection policy` and one for the `privacy policy`.
 
 - Collection Policy: A document created by an application developer that describes the data model of their application. This document contains information about the schemas and configurations of the databases. There is only one single collection policy per application, and references to this document are stored by all users of the application.
 - Privacy policy: A document that is generated as the user interacts with an application, which contains the specific ids/addresses of particular database instances that are controlled by the user for this application.
@@ -293,7 +293,7 @@ This abstraction provides two benefits. It allows third-party application develo
 
 #### Collection Policy
 
-As mentioned, the collection policy is a document created by an application developer to describe the data format for their application. Currently the collection policy supports describing [Textile](https://github.com/textileio/js-threads) and [OrbitDB](https://github.com/orbitdb/orbit-db) databases, but this can easily be extended to other database systems as well.
+As mentioned, the `collection policy` is a document created by an application developer to describe the data format for their application. Currently the collection policy supports describing [Textile](https://github.com/textileio/js-threads) and [OrbitDB](https://github.com/orbitdb/orbit-db) databases, but this can easily be extended to other database systems as well.
 
 ##### Schema
 
@@ -422,12 +422,12 @@ As mentioned, the collection policy is a document created by an application deve
 
 #### Privacy Policy
 
-The privacy policy document contains information that describes a particular data source in such a way as to make it consumable by other services upon consent. All of the data is encrypted using the specific [privacy policy read key](#keychain) of this policy. 
+The `privacy policy` document contains information that describes a particular data source in such a way as to make it consumable by other services upon user consent. All of the data is encrypted using the specific [privacy policy read key](#keychain) of this data source. 
 
 - Collection-policy property: A pointer to the collection policy document that this privacy policy applies to.
-- Service-policies property: An array of service policy documents (not specified in this readme) that describe the services and their location where the data in this privacy policy exists. This includes services such as those that back up or pin the data. 
+- Service-policies property: An array of service policy documents (not specified in this readme) that describe the services and their location where the data in this privacy policy exists. This includes services such as those that back up or pin the data, and allows others to find the data if given permission.
 - Applications property: An array of applications that have been granted permission by the user.
-- References property: An encrypted array of entries which, when decrypted, contains information about the database used to store the user's information.
+- References property: An array of entries which contain information for the individual databases that the user has for this collection. Each entry is individually encrypted, allowing users to permit access to individual data stores within the collection.
 
 ##### Schema
 
@@ -501,7 +501,7 @@ The privacy policy document contains information that describes a particular dat
 
 ### Services
 
-The `services` document stores links to the service policies of the preferred services that the user can configure. For example, this might include third-party services such as data backup, notifications, email, messaging, and more.
+The `services` document stores links to the service policies of the preferred services for the identity. For example, this might include third-party services such as data backup, notifications, email, messaging, and more.
 
 ### And More...
 
