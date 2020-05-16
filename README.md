@@ -1,6 +1,6 @@
 ![3ID Logo](https://uploads-ssl.webflow.com/5ebcbef3ac4954196dcdc7b5/5ebf4cbf6f47032c789b2074_3ID%20Github.png)
 
-# [WIP] An introduction to 3ID
+# [WIP] Introduction to the 3ID Protocol
 > 3ID is a cross-platform identity protocol built on the Ceramic network
 
 The core of a 3ID is a cross-platform identifiers (DID) controlled by a seed. This is the most minimal implementation of 3ID. Optionally, an account template can be added to a 3ID that extends its functionality in various ways.
